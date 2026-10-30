@@ -10,9 +10,10 @@ export interface InjectionSanitizeResult {
 export class PromptInjectionService {
   private readonly suspiciousPatterns: { name: string; pattern: RegExp }[] = [
     { name: 'instruction_override', pattern: /(ignore|disregard|forget|bypass)\s+(all\s+)?(previous|above|system)\s+(instructions|prompts|rules)/i },
-    { name: 'system_impersonation', pattern: /(system\s*override|you\s+are\s+now|act\s+as\s+system|developer\s+mode|dan\s+mode)/i },
+    { name: 'system_impersonation', pattern: /(system\s*override|you\s+are\s+now|act\s+as\s+system|developer\s+mode|dan\s+mode|you\s+are\s+dan|dan\s*\()/i },
     { name: 'privilege_escalation', pattern: /(execute\s+command|run\s+tool|force\s+approve|bypass\s+approval|admin\s+override)/i },
     { name: 'prompt_leak', pattern: /(reveal|print|repeat|show)\s+(your\s+)?(system\s+prompt|hidden\s+rules|instructions)/i },
+    { name: 'tag_injection', pattern: /<\/?(system|instructions|policy|admin|tool|prompt|user_query)>/i },
   ];
 
   sanitizeCustomerInput(input: string): InjectionSanitizeResult {

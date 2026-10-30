@@ -104,3 +104,90 @@ This living document captures significant technical and architectural decisions 
   - Fully compliant with IP and licensing guidelines.
   - Responsive, crisp rendering across mobile, desktop, and app icons.
 
+
+---
+
+## ADR-006: Server-Side Human Approval & Cryptographic Idempotency for Sensitive Actions (Phase 7)
+
+- **Date:** 2026-10-31
+- **Status:** Accepted
+- **Context:**
+  Sensitive financial operations (e.g. refunds, cancellations) must never be executed autonomously by the AI or unauthorized agents. Duplicate executions can cause double refunds or financial leakage.
+- **Decision:**
+  1. Decouple proposal creation from financial execution: `prepare_refund_proposal` only produces a typed draft proposal with `PENDING` status.
+  2. Enforce explicit server-side authorization: only users with `SUPPORT_MANAGER` or `TENANT_ADMIN` roles can approve or execute proposals.
+  3. Require a mandatory `x-idempotency-key` (SHA-256 canonical hash of tenant, order, proposal, and amount). If a duplicate request with the same key arrives, the system returns the existing execution result without performing an external charge.
+  4. Non-matching keys on already executed proposals are strictly rejected with 400 Bad Request.
+- **Consequences:**
+  - AI can safely suggest refund drafts without financial risk.
+  - Zero double refunds across network retries or accidental duplicate submissions.
+
+---
+
+## ADR-007: Intelligent Multi-Signal Routing & Shadow Mode Evaluation (Phase 8)
+
+- **Date:** 2026-10-31
+- **Status:** Accepted
+- **Context:**
+  Assigning conversations based purely on round-robin ignores agent skills, languages, workload, and customer urgency. However, deploying an AI router immediately can disrupt existing team workflows.
+- **Decision:**
+  1. Build a multi-signal scoring engine combining skill match (35%), capacity (25%), language match (20%), CSAT factor (10%), and urgency factor (10%).
+  2. Implement Shadow Mode as default: the engine computes recommendations, logs rationales and alternative candidates, and compares against human routing choices without altering assignments.
+  3. In Active Mode, auto-assignment occurs only when confidence >= 0.60; otherwise, the system gracefully falls back to queue or round-robin.
+  4. Enforce hard capacity caps: agents at maximum concurrent tickets are excluded from assignment.
+  5. Provide manager manual overrides with audit logging.
+- **Consequences:**
+  - Safe, non-disruptive validation of AI routing accuracy before enabling live assignment.
+  - No agent is ever overloaded beyond capacity.
+
+---
+
+## ADR-008: 8-Dimension Automated QA Evaluation & Non-Punitive Coaching (Phase 9)
+
+- **Date:** 2026-10-31
+- **Status:** Accepted
+- **Context:**
+  Customer support quality monitoring typically covers only a fraction of tickets and lacks objective scoring criteria. Automated QA evaluations must be fair, transparent, and non-punitive.
+- **Decision:**
+  1. Evaluate 100% of resolved conversations across 8 explicit dimensions: Accuracy, Policy Compliance, Resolution Quality, Empathy and Tone, Clarity and Conciseness, Citation Quality, Tool Correctness, and Safety and Boundaries.
+  2. Overall score is a weighted composite. Critical breaches (safety < 3, policy < 3, empathy < 2) trigger explicit warning flags.
+  3. Generate constructive coaching notes: positive reinforcement (strengths), areas for growth, and suggested alternative phrasing.
+  4. Implement manager review, score adjustment, and overturn workflows.
+  5. Implement agent dispute workflows: unverified AI evaluations are never used for automated penalties.
+- **Consequences:**
+  - Complete visibility into agent and AI support quality.
+  - Actionable feedback loop for continuous agent coaching.
+
+---
+
+## ADR-009: Real-Event Analytics Aggregation & 20-Category Golden CI Eval Gate (Phase 10)
+
+- **Date:** 2026-10-31
+- **Status:** Accepted
+- **Context:**
+  Support analytics often rely on vanity metrics or hardcoded dashboards. Metrics must be computed from real stored events, evaluations, and conversation records with sample sizes (n=...).
+- **Decision:**
+  1. Operational KPIs (Resolution Rate, FCR, Escalation Rate, Median Response/Resolution Times) and AI Performance KPIs (Citation Accuracy, Hallucination Rate, Tool Success Rate, Cost Per Ticket) are computed dynamically from stored entities.
+  2. Empty states gracefully return 0 without NaN or exceptions.
+  3. Expand the Golden Evaluation dataset to cover all 20 master prompt categories, running as an automated regression gate in CI.
+  4. Provide side-by-side model comparison (Gemini 2.5 Flash vs OpenAI GPT-4o-mini vs Local Mock) with latency, accuracy, and MRR.
+  5. Support CSV and JSON exports.
+- **Consequences:**
+  - Trustworthy, transparent operations and AI reliability reporting.
+  - Zero regression risk on prompt or model upgrades.
+
+---
+
+## ADR-010: Release Hardening, Failure Injection, and Production Readiness (Phase 11)
+
+- **Date:** 2026-10-31
+- **Status:** Accepted
+- **Context:**
+  Production deployment requires proven resilience under external provider outages, budget limits, and hostile attack vectors.
+- **Decision:**
+  1. Implement automated failure injection tests verifying provider failover, AI budget exhaustion graceful degradation to human inbox, and in-memory cache resilience.
+  2. Execute security penetration tests confirming multi-tenant isolation, prompt injection resistance, and AES-256-GCM ciphertext integrity.
+  3. Compile complete operational documentation (`OPERATIONS.md`, `README.md`, `PROGRESS.md`).
+- **Consequences:**
+  - Proven resilience under catastrophic failure scenarios.
+  - Zero open high-severity security vulnerabilities.
