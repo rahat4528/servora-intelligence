@@ -15,7 +15,7 @@ import { RolesGuard } from '../auth/roles.guard';
 import { Roles } from '../auth/roles.decorator';
 import { TenantContextService } from '../common/tenancy/tenant-context.service';
 
-@Controller('api/routing')
+@Controller('routing')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class RoutingController {
   constructor(
