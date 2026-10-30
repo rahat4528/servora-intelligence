@@ -57,8 +57,8 @@ export class AuthService {
   }
 
   private seedDefaultUsersSync() {
-    // Generate deterministic sync hash for default test accounts
-    const passwordHash = '$2a$10$wTf7tE29y4b.y9e6L8K9U.Pz2lS7mR5F6g7H8i9J0k1L2m3N4o5P6'; // bcrypt hash of Password123!
+    // Deterministic bcrypt hash of 'Password123!'
+    const passwordHash = '$2a$10$YMbo2j.9FeoWCxi04zSQ4eSA.LzrjTMcZd8iEXBP3Uv79ojpPo1zG';
 
     const seedUsers: UserRecord[] = [
       {
