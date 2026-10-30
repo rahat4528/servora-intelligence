@@ -12,6 +12,7 @@ import { TenantsModule } from './tenants/tenants.module';
 import { UsersModule } from './users/users.module';
 import { AuditModule } from './audit/audit.module';
 import { InboxModule } from './inbox/inbox.module';
+import { AiModule } from './ai/ai.module';
 import { HealthModule } from './health/health.module';
 
 @Module({
@@ -29,6 +30,7 @@ import { HealthModule } from './health/health.module';
     UsersModule,
     AuditModule,
     InboxModule,
+    AiModule,
     HealthModule,
   ],
   providers: [StructuredLoggerService],
