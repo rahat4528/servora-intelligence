@@ -17,8 +17,8 @@ This living document tracks the execution status of all phases and features acro
 | **Phase 5** | **CalQuick Integration (Read-Only Adapter)** | **Done and Verified** | Typed adapter, deterministic mock sandbox engine, order/courier endpoints, audit events, blocker documented. |
 | **Phase 6** | **Tool Registry and Read-Only Tool Calling** | **Done and Verified** | Validated tool calling loop, permission checks, tool budget limits, inbox execution history. |
 | **Phase 7** | **Human-Approved Actions** | **Done and Verified** | Refund proposal preparation, explicit approval workflow, idempotency, duplicate execution protection. **Release B Complete**. |
-| **Phase 8** | **Intelligent Routing** | `in progress` | Multi-signal routing engine, shadow mode, manual overrides, resolution time estimation. |
-| **Phase 9** | **Automated QA and Coaching** | `not started` | 8-dimension conversation evaluation, manager review/dispute workflow, agent coaching views. |
+| **Phase 8** | **Intelligent Routing** | **Done and Verified** | Multi-signal routing engine, shadow mode, manual overrides, resolution time estimation. |
+| **Phase 9** | **Automated QA and Coaching** | `in progress` | 8-dimension conversation evaluation, manager review/dispute workflow, agent coaching views. |
 | **Phase 10** | **Analytics and Evaluation Dashboard** | `not started` | Stored metric aggregations, full 20-category golden CI evaluation gate, model comparisons. |
 | **Phase 11** | **Release Hardening** | `not started` | Security audit, failure injection, performance tuning, final regression test suite. |
 
@@ -94,9 +94,9 @@ This living document tracks the execution status of all phases and features acro
 - [x] `submit_refund_draft` execution with idempotency protection
 
 ### Intelligent Routing & Quality Assurance (Phases 8, 9)
-- [ ] Multi-signal scoring engine (skills, workload, SLA, language) (`not started`)
-- [ ] Shadow mode routing comparison (`not started`)
-- [ ] Manager override and fallback routing (`not started`)
+- [x] Multi-signal scoring engine (skills, workload, SLA, language)
+- [x] Shadow mode routing comparison
+- [x] Manager override and fallback routing
 - [ ] Automated QA evaluation across 8 dimensions (`not started`)
 - [ ] Manager QA review, rubric calibration, and dispute workflows (`not started`)
 - [ ] Agent coaching notes and performance view (`not started`)
