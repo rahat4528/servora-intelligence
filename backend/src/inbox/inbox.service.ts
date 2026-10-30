@@ -1,11 +1,21 @@
 import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
+import { Subject, Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import {
   ConversationStatus,
   ConversationPriority,
   MessageSenderType,
 } from '@servora/common';
 import { AuditService } from '../audit/audit.service';
+
+export interface InboxStreamEvent {
+  type: 'CONVERSATION_CREATED' | 'MESSAGE_SENT' | 'NOTE_ADDED' | 'STATUS_CHANGED' | 'ASSIGNED';
+  tenantId: string;
+  conversationId: string;
+  data: any;
+  timestamp: string;
+}
 
 export interface MessageRecord {
   id: string;
@@ -74,6 +84,15 @@ export class InboxService {
   private conversations: Map<string, ConversationRecord> = new Map();
   private messages: Map<string, MessageRecord[]> = new Map();
   private internalNotes: Map<string, InternalNoteRecord[]> = new Map();
+  private eventSubject = new Subject<InboxStreamEvent>();
+
+  public getEventStream(tenantId: string): Observable<InboxStreamEvent> {
+    return this.eventSubject.asObservable().pipe(filter((e) => e.tenantId === tenantId));
+  }
+
+  private emitEvent(event: InboxStreamEvent) {
+    this.eventSubject.next(event);
+  }
 
   constructor(private readonly auditService: AuditService) {
     this.seedConversations();
@@ -281,6 +300,14 @@ export class InboxService {
       details: { title: dto.title, customerEmail: dto.customerEmail },
     });
 
+    this.emitEvent({
+      type: 'CONVERSATION_CREATED',
+      tenantId,
+      conversationId: id,
+      data: conversation,
+      timestamp: now,
+    });
+
     return {
       ...conversation,
       messages: [firstMessage],
@@ -332,6 +359,14 @@ export class InboxService {
 
     this.conversations.set(conversationId, conv);
 
+    this.emitEvent({
+      type: 'MESSAGE_SENT',
+      tenantId,
+      conversationId,
+      data: msg,
+      timestamp: now,
+    });
+
     return msg;
   }
 
@@ -361,6 +396,14 @@ export class InboxService {
     currentNotes.push(note);
     this.internalNotes.set(conversationId, currentNotes);
 
+    this.emitEvent({
+      type: 'NOTE_ADDED',
+      tenantId,
+      conversationId,
+      data: note,
+      timestamp: note.createdAt,
+    });
+
     return note;
   }
 
@@ -387,6 +430,14 @@ export class InboxService {
       details: { oldStatus, newStatus: status },
     });
 
+    this.emitEvent({
+      type: 'STATUS_CHANGED',
+      tenantId,
+      conversationId,
+      data: { oldStatus, newStatus: status },
+      timestamp: conv.updatedAt,
+    });
+
     return conv;
   }
 
@@ -411,6 +462,14 @@ export class InboxService {
       resourceId: conversationId,
       action: 'ASSIGN',
       details: { oldAgentId, newAgentId: agentId },
+    });
+
+    this.emitEvent({
+      type: 'ASSIGNED',
+      tenantId,
+      conversationId,
+      data: { oldAgentId, newAgentId: agentId },
+      timestamp: conv.updatedAt,
     });
 
     return conv;

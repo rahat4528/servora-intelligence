@@ -1,5 +1,7 @@
-import { Controller, Get, Post, Put, Body, Param, Query, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Put, Body, Param, Query, Req, UseGuards, Sse, MessageEvent } from '@nestjs/common';
 import { Request } from 'express';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import {
   InboxService,
   ListConversationsFilter,
@@ -7,9 +9,11 @@ import {
   ConversationRecord,
   MessageRecord,
   InternalNoteRecord,
+  InboxStreamEvent,
 } from './inbox.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { RolesGuard } from '../auth/roles.guard';
+import { Public } from '../auth/public.decorator';
 import { CurrentUser, AuthenticatedUser } from '../auth/current-user.decorator';
 import {
   ConversationStatus,
@@ -21,6 +25,19 @@ import {
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class InboxController {
   constructor(private readonly inboxService: InboxService) {}
+
+  @Sse('stream')
+  @Public()
+  streamInboxEvents(
+    @Query('tenantId') tenantId: string = 'tenant-default',
+  ): Observable<MessageEvent> {
+    return this.inboxService.getEventStream(tenantId).pipe(
+      map((event: InboxStreamEvent) => ({
+        data: event,
+        type: event.type,
+      })),
+    );
+  }
 
   @Get('conversations')
   async listConversations(

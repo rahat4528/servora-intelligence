@@ -162,5 +162,31 @@ describe('Inbox Core Test Suite (Phase 2B)', () => {
       expect(listB.items.every((c) => c.tenantId === 'tenant-isolated')).toBe(true);
     });
   });
+
+  describe('5. Real-Time Ticket Event Streaming', () => {
+    it('should broadcast live event on message creation and status change', (done) => {
+      const stream$ = inboxService.getEventStream('tenant-default');
+      const receivedEvents: string[] = [];
+
+      const sub = stream$.subscribe((event) => {
+        receivedEvents.push(event.type);
+        if (receivedEvents.includes('MESSAGE_SENT') && receivedEvents.includes('STATUS_CHANGED')) {
+          sub.unsubscribe();
+          expect(receivedEvents).toContain('MESSAGE_SENT');
+          expect(receivedEvents).toContain('STATUS_CHANGED');
+          done();
+        }
+      });
+
+      inboxService.addMessage('conv-101', 'tenant-default', {
+        senderType: MessageSenderType.AGENT,
+        senderId: 'usr-agent-1',
+        senderName: 'Agent Sarah',
+        content: 'Streaming test message',
+      });
+
+      inboxService.updateStatus('conv-101', 'tenant-default', ConversationStatus.RESOLVED, 'usr-agent-1');
+    });
+  });
 });
 
