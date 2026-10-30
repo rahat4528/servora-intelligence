@@ -13,8 +13,8 @@ This living document tracks the execution status of all phases and features acro
 | **Phase 2** | **Multi-Tenancy, RBAC, and Audit** | **Done and Verified** | Tenant isolation proven at API/service/crypto layers; audit logging active; RBAC enforced. |
 | **Phase 2B** | **Inbox Core (Greenfield Addition)** | **Done and Verified** | Complete operational inbox built: threads, replies, private notes, assignment, statuses, search, and tenant-isolated tests. |
 | **Phase 3** | **AI Core, Governance Baseline & Golden Harness** | **Done and Verified** | Multilingual (EN/BN/Banglish) language detector, intent/sentiment/urgency classifier, PII redaction, budget service, provider failover, golden CI harness. |
-| **Phase 4** | **Knowledge Intelligence (RAG)** | `in progress` | Document ingestion, tenant pgvector search, citation validator, Bangla/Banglish retrieval evaluated. |
-| **Phase 5** | **CalQuick Integration (Read-Only Adapter)** | `not started` | Typed adapter with deterministic mock engine, orders/courier lookups, blocker documented. |
+| **Phase 4** | **Knowledge Intelligence (RAG)** | **Done and Verified** | Ingestion pipeline, pgvector embedding alignment, hybrid search, citation validator, Banglish benchmark. **Release A Complete**. |
+| **Phase 5** | **CalQuick Integration (Read-Only Adapter)** | `in progress` | Typed adapter with deterministic mock engine, orders/courier lookups, blocker documented. |
 | **Phase 6** | **Tool Registry and Read-Only Tool Calling** | `not started` | Validated tool calling loop, permission checks, tool budget limits, inbox execution history. |
 | **Phase 7** | **Human-Approved Actions** | `not started` | Refund proposal preparation, explicit approval workflow, idempotency, duplicate execution protection. |
 | **Phase 8** | **Intelligent Routing** | `not started` | Multi-signal routing engine, shadow mode, manual overrides, resolution time estimation. |
