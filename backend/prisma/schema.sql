@@ -242,3 +242,4 @@ CREATE TABLE IF NOT EXISTS tool_execution_logs (
 );
 
 CREATE INDEX IF NOT EXISTS idx_tool_exec_tenant_time ON tool_execution_logs(tenant_id, created_at DESC);
+
