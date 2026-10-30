@@ -13,6 +13,7 @@ import { UsersModule } from './users/users.module';
 import { AuditModule } from './audit/audit.module';
 import { InboxModule } from './inbox/inbox.module';
 import { RagModule } from './rag/rag.module';
+import { CalQuickModule } from './integrations/calquick/calquick.module';
 import { AiModule } from './ai/ai.module';
 import { HealthModule } from './health/health.module';
 
@@ -32,6 +33,7 @@ import { HealthModule } from './health/health.module';
     AuditModule,
     InboxModule,
     RagModule,
+    CalQuickModule,
     AiModule,
     HealthModule,
   ],

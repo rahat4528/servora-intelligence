@@ -14,8 +14,8 @@ This living document tracks the execution status of all phases and features acro
 | **Phase 2B** | **Inbox Core (Greenfield Addition)** | **Done and Verified** | Complete operational inbox built: threads, replies, private notes, assignment, statuses, search, and tenant-isolated tests. |
 | **Phase 3** | **AI Core, Governance Baseline & Golden Harness** | **Done and Verified** | Multilingual (EN/BN/Banglish) language detector, intent/sentiment/urgency classifier, PII redaction, budget service, provider failover, golden CI harness. |
 | **Phase 4** | **Knowledge Intelligence (RAG)** | **Done and Verified** | Ingestion pipeline, pgvector embedding alignment, hybrid search, citation validator, Banglish benchmark. **Release A Complete**. |
-| **Phase 5** | **CalQuick Integration (Read-Only Adapter)** | `in progress` | Typed adapter with deterministic mock engine, orders/courier lookups, blocker documented. |
-| **Phase 6** | **Tool Registry and Read-Only Tool Calling** | `not started` | Validated tool calling loop, permission checks, tool budget limits, inbox execution history. |
+| **Phase 5** | **CalQuick Integration (Read-Only Adapter)** | **Done and Verified** | Typed adapter, deterministic mock sandbox engine, order/courier endpoints, audit events, blocker documented. |
+| **Phase 6** | **Tool Registry and Read-Only Tool Calling** | `in progress` | Validated tool calling loop, permission checks, tool budget limits, inbox execution history. |
 | **Phase 7** | **Human-Approved Actions** | `not started` | Refund proposal preparation, explicit approval workflow, idempotency, duplicate execution protection. |
 | **Phase 8** | **Intelligent Routing** | `not started` | Multi-signal routing engine, shadow mode, manual overrides, resolution time estimation. |
 | **Phase 9** | **Automated QA and Coaching** | `not started` | 8-dimension conversation evaluation, manager review/dispute workflow, agent coaching views. |
