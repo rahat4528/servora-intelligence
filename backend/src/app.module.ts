@@ -14,6 +14,7 @@ import { AuditModule } from './audit/audit.module';
 import { InboxModule } from './inbox/inbox.module';
 import { RagModule } from './rag/rag.module';
 import { CalQuickModule } from './integrations/calquick/calquick.module';
+import { ToolsModule } from './tools/tools.module';
 import { AiModule } from './ai/ai.module';
 import { HealthModule } from './health/health.module';
 
@@ -34,6 +35,7 @@ import { HealthModule } from './health/health.module';
     InboxModule,
     RagModule,
     CalQuickModule,
+    ToolsModule,
     AiModule,
     HealthModule,
   ],

@@ -15,8 +15,8 @@ This living document tracks the execution status of all phases and features acro
 | **Phase 3** | **AI Core, Governance Baseline & Golden Harness** | **Done and Verified** | Multilingual (EN/BN/Banglish) language detector, intent/sentiment/urgency classifier, PII redaction, budget service, provider failover, golden CI harness. |
 | **Phase 4** | **Knowledge Intelligence (RAG)** | **Done and Verified** | Ingestion pipeline, pgvector embedding alignment, hybrid search, citation validator, Banglish benchmark. **Release A Complete**. |
 | **Phase 5** | **CalQuick Integration (Read-Only Adapter)** | **Done and Verified** | Typed adapter, deterministic mock sandbox engine, order/courier endpoints, audit events, blocker documented. |
-| **Phase 6** | **Tool Registry and Read-Only Tool Calling** | `in progress` | Validated tool calling loop, permission checks, tool budget limits, inbox execution history. |
-| **Phase 7** | **Human-Approved Actions** | `not started` | Refund proposal preparation, explicit approval workflow, idempotency, duplicate execution protection. |
+| **Phase 6** | **Tool Registry and Read-Only Tool Calling** | **Done and Verified** | Validated tool calling loop, permission checks, tool budget limits, inbox execution history. |
+| **Phase 7** | **Human-Approved Actions** | `in progress` | Refund proposal preparation, explicit approval workflow, idempotency, duplicate execution protection. |
 | **Phase 8** | **Intelligent Routing** | `not started` | Multi-signal routing engine, shadow mode, manual overrides, resolution time estimation. |
 | **Phase 9** | **Automated QA and Coaching** | `not started` | 8-dimension conversation evaluation, manager review/dispute workflow, agent coaching views. |
 | **Phase 10** | **Analytics and Evaluation Dashboard** | `not started` | Stored metric aggregations, full 20-category golden CI evaluation gate, model comparisons. |
@@ -40,55 +40,55 @@ This living document tracks the execution status of all phases and features acro
 ## 3. Feature Matrix Checklist
 
 ### Core Support Inbox (Phases 1, 2, 2B)
-- [ ] Customer conversation list and thread history (`not started`)
-- [ ] Incoming and outgoing messages (`not started`)
-- [ ] Ticket status management (`open`, `pending`, `resolved`, `closed`) (`not started`)
-- [ ] Agent assignment and manual reassignment (`not started`)
-- [ ] Manual routing rules (`not started`)
-- [ ] Customer details and metadata sidebar (`not started`)
-- [ ] Search and conversation filtering (`not started`)
-- [ ] Tags and priority categories (`not started`)
-- [ ] Internal notes with author attribution (`not started`)
-- [ ] Unread counts and notification states (`not started`)
-- [ ] Real-time updates via WebSockets or polling (`not started`)
+- [x] Customer conversation list and thread history
+- [x] Incoming and outgoing messages
+- [x] Ticket status management (`open`, `pending`, `resolved`, `closed`)
+- [x] Agent assignment and manual reassignment
+- [x] Manual routing rules
+- [x] Customer details and metadata sidebar
+- [x] Search and conversation filtering
+- [x] Tags and priority categories
+- [x] Internal notes with author attribution
+- [x] Unread counts and notification states
+- [x] Real-time updates via WebSockets or polling
 
 ### Multi-Tenancy & Security (Phase 2)
-- [ ] Tenant management and tenant settings (`not started`)
-- [ ] Role-Based Access Control (`Agent`, `Manager`, `Tenant Admin`) (`not started`)
-- [ ] Server-side authorization guards on all endpoints (`not started`)
-- [ ] Row-Level Security / tenant-scoped database isolation (`not started`)
-- [ ] Tenant context propagation across HTTP, Redis, and queues (`not started`)
-- [ ] Encrypted credential storage (`not started`)
-- [ ] Structured audit logging and audit trail UI (`not started`)
-- [ ] Tenant isolation test suite (`not started`)
+- [x] Tenant management and tenant settings
+- [x] Role-Based Access Control (`Agent`, `Manager`, `Tenant Admin`)
+- [x] Server-side authorization guards on all endpoints
+- [x] Row-Level Security / tenant-scoped database isolation
+- [x] Tenant context propagation across HTTP, Redis, and queues
+- [x] Encrypted credential storage
+- [x] Structured audit logging and audit trail UI
+- [x] Tenant isolation test suite
 
 ### AI Orchestrator & Governance (Phase 3)
-- [ ] Config-driven LLM provider abstraction (Gemini, OpenAI, Mock) (`not started`)
-- [ ] Configurable model versions and prompt registries (`not started`)
-- [ ] Tenant AI spend budgets (daily, monthly, per conversation) (`not started`)
-- [ ] PII detection and redaction engine (`not started`)
-- [ ] Untrusted prompt injection defenses (`not started`)
-- [ ] Multilingual detector (English, Bangla, Banglish, Mixed) (`not started`)
-- [ ] Intent, sentiment, and urgency classification (`not started`)
-- [ ] AI summaries and reply draft generation (`not started`)
-- [ ] Golden evaluation harness skeleton with CI integration (`not started`)
+- [x] Config-driven LLM provider abstraction (Gemini, OpenAI, Mock)
+- [x] Configurable model versions and prompt registries
+- [x] Tenant AI spend budgets (daily, monthly, per conversation)
+- [x] PII detection and redaction engine
+- [x] Untrusted prompt injection defenses
+- [x] Multilingual detector (English, Bangla, Banglish, Mixed)
+- [x] Intent, sentiment, and urgency classification
+- [x] AI summaries and reply draft generation
+- [x] Golden evaluation harness skeleton with CI integration
 
 ### Tenant RAG Knowledge System (Phase 4)
-- [ ] Document management API and UI (PDF, DOCX, TXT) (`not started`)
-- [ ] Text extraction, normalization, chunking, and embedding generation (`not started`)
-- [ ] Tenant-isolated pgvector storage and hybrid search (`not started`)
-- [ ] Answer generation with real source citations (`not started`)
-- [ ] Automated citation validator (rejection of hallucinated citations) (`not started`)
-- [ ] Banglish and Bangla retrieval benchmark suite (`not started`)
+- [x] Document management API and UI (PDF, DOCX, TXT)
+- [x] Text extraction, normalization, chunking, and embedding generation
+- [x] Tenant-isolated pgvector storage and hybrid search
+- [x] Answer generation with real source citations
+- [x] Automated citation validator (rejection of hallucinated citations)
+- [x] Banglish and Bangla retrieval benchmark suite
 
 ### External CalQuick Integration & Tools (Phases 5, 6, 7)
-- [ ] CalQuick typed adapter interface (`not started`)
-- [ ] CalQuick deterministic mock engine & sandbox runner (`not started`)
-- [ ] `lookup_order` tool (`not started`)
-- [ ] `check_courier_status` tool (`not started`)
-- [ ] `search_customer_policy` tool (`not started`)
-- [ ] `get_customer_history` tool (`not started`)
-- [ ] Tool registry with schema validation and role permissions (`not started`)
+- [x] CalQuick typed adapter interface
+- [x] CalQuick deterministic mock engine & sandbox runner
+- [x] `lookup_order` tool
+- [x] `check_courier_status` tool
+- [x] `search_customer_policy` tool
+- [x] `get_customer_history` tool
+- [x] Tool registry with schema validation and role permissions
 - [ ] `prepare_refund_proposal` (read-only draft proposal) (`not started`)
 - [ ] Human approval workflow with states (`pending`, `approved`, etc.) (`not started`)
 - [ ] `submit_refund_draft` execution with idempotency protection (`not started`)
