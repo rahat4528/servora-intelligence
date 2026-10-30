@@ -5,6 +5,12 @@ import { validateEnvironment } from './common/config/env.validation';
 import { FeatureFlagsModule } from './common/feature-flags/feature-flags.module';
 import { StructuredLoggerService } from './common/logging/structured-logger.service';
 import { RequestIdMiddleware } from './common/middleware/request-id.middleware';
+import { CryptoModule } from './common/crypto/crypto.module';
+import { TenancyModule } from './common/tenancy/tenancy.module';
+import { AuthModule } from './auth/auth.module';
+import { TenantsModule } from './tenants/tenants.module';
+import { UsersModule } from './users/users.module';
+import { AuditModule } from './audit/audit.module';
 import { HealthModule } from './health/health.module';
 
 @Module({
@@ -14,7 +20,13 @@ import { HealthModule } from './health/health.module';
       load: [configuration],
       validate: validateEnvironment,
     }),
+    CryptoModule,
+    TenancyModule,
     FeatureFlagsModule,
+    AuthModule,
+    TenantsModule,
+    UsersModule,
+    AuditModule,
     HealthModule,
   ],
   providers: [StructuredLoggerService],
@@ -25,4 +37,3 @@ export class AppModule implements NestModule {
     consumer.apply(RequestIdMiddleware).forRoutes('*');
   }
 }
-
