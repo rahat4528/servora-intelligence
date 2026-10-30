@@ -16,8 +16,8 @@ This living document tracks the execution status of all phases and features acro
 | **Phase 4** | **Knowledge Intelligence (RAG)** | **Done and Verified** | Ingestion pipeline, pgvector embedding alignment, hybrid search, citation validator, Banglish benchmark. **Release A Complete**. |
 | **Phase 5** | **CalQuick Integration (Read-Only Adapter)** | **Done and Verified** | Typed adapter, deterministic mock sandbox engine, order/courier endpoints, audit events, blocker documented. |
 | **Phase 6** | **Tool Registry and Read-Only Tool Calling** | **Done and Verified** | Validated tool calling loop, permission checks, tool budget limits, inbox execution history. |
-| **Phase 7** | **Human-Approved Actions** | `in progress` | Refund proposal preparation, explicit approval workflow, idempotency, duplicate execution protection. |
-| **Phase 8** | **Intelligent Routing** | `not started` | Multi-signal routing engine, shadow mode, manual overrides, resolution time estimation. |
+| **Phase 7** | **Human-Approved Actions** | **Done and Verified** | Refund proposal preparation, explicit approval workflow, idempotency, duplicate execution protection. **Release B Complete**. |
+| **Phase 8** | **Intelligent Routing** | `in progress` | Multi-signal routing engine, shadow mode, manual overrides, resolution time estimation. |
 | **Phase 9** | **Automated QA and Coaching** | `not started` | 8-dimension conversation evaluation, manager review/dispute workflow, agent coaching views. |
 | **Phase 10** | **Analytics and Evaluation Dashboard** | `not started` | Stored metric aggregations, full 20-category golden CI evaluation gate, model comparisons. |
 | **Phase 11** | **Release Hardening** | `not started` | Security audit, failure injection, performance tuning, final regression test suite. |
@@ -89,9 +89,9 @@ This living document tracks the execution status of all phases and features acro
 - [x] `search_customer_policy` tool
 - [x] `get_customer_history` tool
 - [x] Tool registry with schema validation and role permissions
-- [ ] `prepare_refund_proposal` (read-only draft proposal) (`not started`)
-- [ ] Human approval workflow with states (`pending`, `approved`, etc.) (`not started`)
-- [ ] `submit_refund_draft` execution with idempotency protection (`not started`)
+- [x] `prepare_refund_proposal` (read-only draft proposal)
+- [x] Human approval workflow with states (`pending`, `approved`, etc.)
+- [x] `submit_refund_draft` execution with idempotency protection
 
 ### Intelligent Routing & Quality Assurance (Phases 8, 9)
 - [ ] Multi-signal scoring engine (skills, workload, SLA, language) (`not started`)
