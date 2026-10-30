@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 90" width="420" height="90" role="img" aria-label="Servora Intelligence lockup logo">
+  <defs>
+    <linearGradient id="servora-lockup-blue-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4DB8FF" />
+      <stop offset="100%" stop-color="#2F8CFF" />
+    </linearGradient>
+    <linearGradient id="servora-lockup-violet-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5B3CF0" />
+      <stop offset="100%" stop-color="#7C5CFF" />
+    </linearGradient>
+  </defs>
+  <g transform="translate(0, -5)">
+    <path d="M 88 16 L 44 16 A 26 26 0 0 0 18 42 L 18 45 A 8 8 0 0 0 26 53 L 66 53 A 4 4 0 0 0 70 49 L 70 45 A 4 4 0 0 0 66 41 L 44 41 A 10 10 0 0 1 34 31 L 34 30 A 10 10 0 0 1 44 20 L 88 20 Z" fill="url(#servora-lockup-blue-dark)" />
+    <path d="M 12 84 L 56 84 A 26 26 0 0 0 82 58 L 82 55 A 8 8 0 0 0 74 47 L 34 47 A 4 4 0 0 0 30 51 L 30 55 A 4 4 0 0 0 34 59 L 56 59 A 10 10 0 0 1 66 69 L 66 70 A 10 10 0 0 1 56 80 L 12 80 Z" fill="url(#servora-lockup-violet-dark)" />
+  </g>
+  <text x="105" y="46" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="700" font-size="28" letter-spacing="-0.03em" fill="#FFFFFF">Servora</text>
+  <text x="215" y="46" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="400" font-size="28" letter-spacing="-0.02em" fill="#FFFFFF" opacity="0.85">Intelligence</text>
+  <text x="107" y="66" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="500" font-size="10.5" letter-spacing="0.12em" fill="#CBD5E1">AI SUPPORT &amp; OPERATIONS PLATFORM</text>
+</svg>

@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: servora-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: servora_dev
+      POSTGRES_USER: servora_user
+      POSTGRES_PASSWORD: servora_password
+    volumes:
+      - servora-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U servora_user -d servora_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: servora-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - servora-redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: minio/minio:latest
+    container_name: servora-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: servora_minio_user
+      MINIO_ROOT_PASSWORD: servora_minio_password
+    volumes:
+      - servora-miniodata:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  servora-pgdata:
+  servora-redisdata:
+  servora-miniodata:
+

@@ -1,0 +1,16 @@
+{
+  "name": "@servora/common",
+  "version": "1.0.0",
+  "description": "Shared brand tokens, DTOs, types, and feature flag contracts for Servora Intelligence",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "node -e \"const fs = require('fs'); if (fs.existsSync('dist')) fs.rmSync('dist', { recursive: true, force: true });\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
+
