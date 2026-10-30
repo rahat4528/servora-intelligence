@@ -150,6 +150,10 @@ export class BudgetService {
     }
   }
 
+  getTenantUsage(tenantId: string): TenantUsageRecord {
+    return { ...this.getTenantRecord(tenantId) };
+  }
+
   resetTenantSpendForTesting(tenantId: string): void {
     const record = this.getTenantRecord(tenantId);
     record.dailySpendUsd = 0;

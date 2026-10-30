@@ -44,7 +44,7 @@ export class IntentClassifierService {
       sentiment = 'frustrated';
       urgency = Math.max(urgency, 4);
       cues.push('frustrated_sentiment');
-    } else if (/(not working|broken|defective|delay|problem|shomossha|bhul)/i.test(clean)) {
+    } else if (/(not working|broken|defective|delay|problem|shomossha|bhul|unfair|dispute|complaint|unacceptable)/i.test(clean)) {
       sentiment = 'negative';
       cues.push('negative_sentiment');
     } else if (/(thank|thanks|great|good|excellent|dhonnobad|valo)/i.test(clean)) {

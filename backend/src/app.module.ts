@@ -18,6 +18,7 @@ import { ToolsModule } from './tools/tools.module';
 import { ApprovalsModule } from './approvals/approvals.module';
 import { RoutingModule } from './routing/routing.module';
 import { QaModule } from './qa/qa.module';
+import { AnalyticsModule } from './analytics/analytics.module';
 import { AiModule } from './ai/ai.module';
 import { HealthModule } from './health/health.module';
 
@@ -42,6 +43,7 @@ import { HealthModule } from './health/health.module';
     ApprovalsModule,
     RoutingModule,
     QaModule,
+    AnalyticsModule,
     AiModule,
     HealthModule,
   ],

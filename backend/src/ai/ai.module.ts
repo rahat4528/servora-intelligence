@@ -12,9 +12,10 @@ import { AiOrchestratorService } from './orchestrator/ai-orchestrator.service';
 import { AiController } from './orchestrator/ai.controller';
 import { InboxModule } from '../inbox/inbox.module';
 import { AuthModule } from '../auth/auth.module';
+import { FeatureFlagsModule } from '../common/feature-flags/feature-flags.module';
 
 @Module({
-  imports: [InboxModule, AuthModule],
+  imports: [InboxModule, AuthModule, FeatureFlagsModule],
   controllers: [AiController],
   providers: [
     MockLlmProvider,

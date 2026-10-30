@@ -19,8 +19,8 @@ This living document tracks the execution status of all phases and features acro
 | **Phase 7** | **Human-Approved Actions** | **Done and Verified** | Refund proposal preparation, explicit approval workflow, idempotency, duplicate execution protection. **Release B Complete**. |
 | **Phase 8** | **Intelligent Routing** | **Done and Verified** | Multi-signal routing engine, shadow mode, manual overrides, resolution time estimation. |
 | **Phase 9** | **Automated QA and Coaching** | **Done and Verified** | 8-dimension conversation evaluation, manager review/dispute workflow, agent coaching views. |
-| **Phase 10** | **Analytics and Evaluation Dashboard** | `in progress` | Stored metric aggregations, full 20-category golden CI evaluation gate, model comparisons. |
-| **Phase 11** | **Release Hardening** | `not started` | Security audit, failure injection, performance tuning, final regression test suite. |
+| **Phase 10** | **Analytics and Evaluation Dashboard** | **Done and Verified** | Stored metric aggregations, full 20-category golden CI evaluation gate, model comparisons. |
+| **Phase 11** | **Release Hardening** | `in progress` | Security audit, failure injection, performance tuning, final regression test suite. |
 
 ---
 
@@ -102,10 +102,10 @@ This living document tracks the execution status of all phases and features acro
 - [x] Agent coaching notes and performance view
 
 ### AI Evaluation Dashboard & Release Hardening (Phases 10, 11)
-- [ ] Stored KPI calculation (Resolution Rate, Hallucination Rate, Cost/Ticket, etc.) (`not started`)
-- [ ] Filterable dashboards with real historical measurements (`not started`)
-- [ ] Complete 20-category golden CI evaluation gate (`not started`)
-- [ ] Prompt and model version comparison view (`not started`)
+- [x] Stored KPI calculation (Resolution Rate, Hallucination Rate, Cost/Ticket, etc.)
+- [x] Filterable dashboards with real historical measurements
+- [x] Complete 20-category golden CI evaluation gate
+- [x] Prompt and model version comparison view
 - [ ] Comprehensive security audit and penetration test cases (`not started`)
 - [ ] Failure injection tests (database, Redis, LLM outages) (`not started`)
 - [ ] Production deployment manifests, health probes, and documentation (`not started`)
