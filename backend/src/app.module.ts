@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { TenantsModule } from './tenants/tenants.module';
 import { UsersModule } from './users/users.module';
 import { AuditModule } from './audit/audit.module';
+import { InboxModule } from './inbox/inbox.module';
 import { HealthModule } from './health/health.module';
 
 @Module({
@@ -27,6 +28,7 @@ import { HealthModule } from './health/health.module';
     TenantsModule,
     UsersModule,
     AuditModule,
+    InboxModule,
     HealthModule,
   ],
   providers: [StructuredLoggerService],
